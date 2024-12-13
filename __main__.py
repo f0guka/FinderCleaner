@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
     ===========================================
            Welcome to Finder Cleaner!
-                  Version 0.0.2
+              Version 0.0.2-alpha
     ===========================================
     """
     print(banner)

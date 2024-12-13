@@ -19,18 +19,53 @@ The currently supported file types for deletion are as follows:
 - `System Volume Information (Windows)`
 
 ## Usage
-### Set the executable permission for FinderCleaner
-Run the following command in Terminal o set FinderCleaner as an executable file:
+### Set the Executable Permission for Finder Cleaner
+If Finder Cleaner is NOT automatically recognized as Unix Executable File, run the following command in Terminal o set Finder Cleaner as an executable file:
 ```bash
-% chmod +x <FinderCleaner's path>
+% chmod +x <Finder Cleaner's path>
 ```
 
-You can directly drag the FinderCleaner file from Finder into the terminal window, and the path will be filled in automatically.   
+You can directly drag the Finder Cleaner file from Finder into the terminal window, and the path will be filled in automatically.   
 
 For example:
 ```bash
 % chmod +x /Users/username/Downloads/FinderCleaner
 ```
+### Bypass the Security Mechanism of macOS
+Since the program is not signed, it is likely to trigger the security mechanism of macOS (Gatekeeper).    
+
+You may occur the following Warning while openning the Finder Cleaner:
+<div style="display: flex; justify-content: space-around;">
+  <img src="./README_images/Image_1.jpg" alt="Image_1" style="width: 45%;">
+</div>
+
+There are two solutions to fix this, as long as you don't click 'Move to Trash', but the other button.
+
+#### Solution 1 (Temporary)
+##### Step 1:
+ Open System Settings --> Privacy & Security, you can see it mentioning “FinderClean“ at the Security section, click "Open Anyway"
+<div style="display: flex; justify-content: space-around;">
+  <img src="./README_images/Image_2.jpg" alt="Image_2" style="width: 75%;">
+</div>
+
+##### Step 2: 
+Click "Open Anyway" on the pop-up window.  
+<div style="display: flex; justify-content: space-around;">
+  <img src="./README_images/Image_3.jpg" alt="Image_3" style="width: 45%;">
+</div>
+
+#### Solution 2（Permanent）
+##### Step1:
+Enter the following command in the terminal, and then enter the login password of the computer
+```bash
+sudo spctl --master-disable
+```
+##### Step 2: 
+Open System Settings --> Privacy & Security, allow applications from "Anywhere". In macOS 15.0 or later, there might be another pop-up window after selecting "Anywhere", allow it anyway.
+<div style="display: flex; justify-content: space-around;">
+  <img src="./README_images/Image_4.jpg" alt="Image_5" style="width: 75%;">
+</div>
+
 
 ## Dependencies
 This project requires the following dependencies:
@@ -44,7 +79,7 @@ Finder Cleaner was packaged by pyinstaller. The Unix Executable File (Mach-O For
 
 The following commands are used for packaging on macOS and can be used as a reference:
 ```bash
- % pyinstaller --onefile --add-data "modules:modules" --hidden-import psutil __main__.py
+ % pyinstaller --onefile --add-data "modules:modules" --collect-all psutil __main__.py
 ```
 
  ## Future Update Plan
