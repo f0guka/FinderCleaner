@@ -18,6 +18,19 @@ The currently supported file types for deletion are as follows:
 - `Thumbs.db (Windows)`
 - `System Volume Information (Windows)`
 
+## Usage
+### Set the executable permission for FinderCleaner
+Run the following command in Terminal o set FinderCleaner as an executable file:
+```bash
+% chmod +x <FinderCleaner's path>
+```
+
+You can directly drag the FinderCleaner file from Finder into the terminal window, and the path will be filled in automatically.   
+
+For example:
+```bash
+% chmod +x /Users/username/Downloads/FinderCleaner
+```
 
 ## Dependencies
 This project requires the following dependencies:
