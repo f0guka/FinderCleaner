@@ -50,3 +50,4 @@ The following commands are used for packaging on macOS and can be used as a refe
  ## Future Update Plan
  - Customize the types of cleanup files
  - Enable users to ignore specific sub-path
+ 
