@@ -56,7 +56,7 @@ def main():
                     n += 1
                     print(f"[{n}] {volume}")
             else:
-                print("\nNo external storage devices found.")
+                print("\n\033[91mError: No external storage devices found.\033[0m")
                 continue
 
             try:
@@ -64,24 +64,27 @@ def main():
                 if 1 <= volume_choice <= len(external_volumes):
                     directory = external_volumes[volume_choice - 1]
                 else:
-                    print("\nInvalid choice. Please try again.")
+                    print("\n\033[91mError: Invalid choice. Please try again.\033[0m")
                     continue
             except ValueError:
-                print("\nInvalid input. Please enter a number.")
+                print("\n\033[91mError: Invalid input. Please enter a number.\033[0m")
                 continue
             
         elif mode_choice == "2":
             directory = input("Please enter the directory path: ").strip().strip("'\"")
+            if not directory:
+                print("\n\033[91mError: No directory path provided. Please provide a valid directory path.\033[0m")
+                continue
             directory = os.path.normpath(directory) # 标准化路径
             if not os.path.exists(directory):
-                print("\nThe provided path does not exist. Please check the path and try again.")
+                print("\n\033[91mError: The provided path does not exist. Please check the path and try again.\033[0m")
                 continue
             
         elif mode_choice == "3":
             break
 
         else:
-            print("\nInvalid choice. Please try again.")
+            print("\n\033[91mError: Invalid choice. Please try again.\033[0m")
             continue
 
         del_targets(directory)
@@ -93,7 +96,7 @@ if __name__ == "__main__":
 
     ===========================================
            Welcome to Finder Cleaner!
-                  Version 0.0.1
+                  Version 0.0.2
     ===========================================
     """
     print(banner)
